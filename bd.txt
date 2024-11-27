@@ -11,7 +11,7 @@ CREATE TABLE Comidas(
     Tipo VARCHAR(50) NOT NULL,
     Precio DECIMAL(10,2) NOT NULL,
     Restaurante_ID INT,
-    FOREIGN KEY(Restaurante_ID) REFERENCES Restaurantes(id)
+    FOREIGN KEY(Restaurante_ID) REFERENCES Restaurantes(id) ON DELETE CASCADE
     
 );
 
@@ -48,7 +48,13 @@ JOIN Restaurantes ON Comidas.Restaurante_ID = Restaurantes.ID
 GROUP by Restaurantes.Nombre
 HAVING Cantidad_Comidas > 1;
 
-update  Comidas
+UPDATE  Comidas
 SET Tipo = 'Fusion'
-WHERE Nombre = 'Pizza Margarita'
+WHERE Nombre = 'Pizza Margarita';
+
+
+DELETE FROM Restaurantes
+WHERE Nombre = 'Sabor Tropical';
+
+
 
