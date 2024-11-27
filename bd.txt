@@ -36,3 +36,19 @@ SELECT * FROM Comidas;
 SELECT  Nombre, Tipo, precio
 FROM Comidas
 WHERE Precio > 20.00;
+
+SELECT Comidas.Nombre, Comidas.Tipo,Comidas.Precio
+FROM Comidas
+JOIN Restaurantes ON Comidas.Restaurante_ID = Restaurantes.ID
+WHERE Restaurantes.Nombre = 'Delicias del mar';
+
+SELECT Restaurantes.Nombre, COUNT(Comidas.ID) AS Cantidad_Comidas
+FROM Comidas
+JOIN Restaurantes ON Comidas.Restaurante_ID = Restaurantes.ID
+GROUP by Restaurantes.Nombre
+HAVING Cantidad_Comidas > 1;
+
+update  Comidas
+SET Tipo = 'Fusion'
+WHERE Nombre = 'Pizza Margarita'
+
